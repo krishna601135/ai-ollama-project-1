@@ -5,7 +5,6 @@ from services.chat_service import save_message, ask_ollama
 
 def main():
 
-    # 1. Get/create user
     user = get_or_create_user(
         "mohan@example.com",
         "Mohan"
@@ -13,7 +12,6 @@ def main():
 
     print("User:", user["name"])
 
-    # 2. Create conversation
     conversation = create_conversation(
         user["_id"],
         "AI Chat"
@@ -31,14 +29,13 @@ def main():
         if user_input.lower() == "exit":
             break
 
-        # 3. Save user message
+
         save_message(
             conversation_id,
             "user",
             user_input
         )
 
-        # 4. Send conversation history to Ollama
         ask_ollama(conversation_id)
 
 

@@ -4,7 +4,7 @@ users = db['users']
 
 
 def get_or_create_user(email, name):
-    user = user.find_one({"email": email})
+    user = users.find_one({"email": email})
     if user:
         return user
 
